@@ -80,3 +80,17 @@ func (n *Node) deleteIndex(index int) (*Node, error) {
 	}
 	return n, nil
 }
+
+// reverse reverse the nodelist and return the new head of the nodelist
+func (head *Node) reverse() *Node {
+	// reverse from the head node
+	var pre *Node = nil
+	cur := head
+	for cur != nil {
+		temp := cur.next
+		cur.next = pre
+		pre = cur
+		cur = temp
+	}
+	return pre
+}

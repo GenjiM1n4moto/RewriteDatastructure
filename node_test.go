@@ -126,3 +126,23 @@ func TestDeleteIndex(t *testing.T) {
 	_, err = testNodeList.deleteIndex(10)
 	require.Error(t, err)
 }
+
+func TestReverse(t *testing.T) {
+	testNodeList := &Node{
+		val: 1,
+		next: &Node{
+			val: "test",
+			next: &Node{
+				val: "test2",
+				next: &Node{
+					val:  "test3",
+					next: nil,
+				},
+			},
+		},
+	}
+	head := testNodeList.reverse()
+	testNodeListArray, err := head.output()
+	require.NoError(t, err)
+	require.Equal(t, []interface{}{"test3", "test2", "test", 1}, testNodeListArray)
+}
